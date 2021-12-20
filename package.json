@@ -1,5 +1,16 @@
 {
   "dependencies": {
-    "node": "^17.3.0"
+    "node": "^17.3.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "node server.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "start": "node server.js",
+    "dev": "npm run build && nodemon server.js"
   }
 }
